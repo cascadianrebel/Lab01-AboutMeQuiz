@@ -34,7 +34,7 @@ namespace Lab01_AboutMeQuiz
             //for all incorrect answers the following will be returned
             else
             {
-                return "Wrong! I am from Mississippi";
+                return $"Wrong! Do I act like someone from {q1response}? I am from Mississippi";
             }
         }
         //same process for the next 4 questions
