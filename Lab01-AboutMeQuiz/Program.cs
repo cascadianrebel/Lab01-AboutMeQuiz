@@ -6,29 +6,38 @@ namespace Lab01_AboutMeQuiz
     {
         static void Main(string[] args)
         {
+            //Introduction line
             Console.WriteLine("About Me Quiz");
+            // Question 1 displays
             Console.WriteLine(HomeState());
+            // Question 2 displays
             Console.WriteLine(SeattleHome());
+            // Question 3 displays
             Console.WriteLine(PetsOwned());
+            // Question 4 displays
             Console.WriteLine(Birthmark());
+            // Question 5 displays
             Console.WriteLine(FavoriteSport());
         }
 
         static string HomeState()
         {
+            //1st question
             Console.WriteLine("From which state did Anthony move to Washington?");
-
+            //creates variable to hold question response
             string q1response = Console.ReadLine();
-
+            //determines if the response is correct
             if (q1response.ToLower() == "mississippi" || q1response.ToLower() == "ms")
             {
                 return "Correct";
             }
+            //for all incorrect answers the following will be returned
             else
             {
                 return "Wrong! I am from Mississippi";
             }
         }
+        //same process for the next 4 questions
         static string SeattleHome()
         {
             Console.WriteLine("Does Anthony live in the city limits of Seattle?");
@@ -68,6 +77,7 @@ namespace Lab01_AboutMeQuiz
             }
             else
             {
+                //using the user's response within the incorrect reply
                 return $"Hey now! What is wrong with my {q4response}? I have partial heterochromia meaning my eyeball is two different colors";
             }
         }
@@ -78,11 +88,11 @@ namespace Lab01_AboutMeQuiz
 
             if (q5response.ToLower() == "football")
             {
-                return "Correct!";
+                return "Damn, right! I love me some good ole football. I follow college football religiously";
             }
             else
             {
-                return "wrong!";
+                return $"Meh. I don't really enjoy watching {q5response} on TV.";
             }
         }
     }
