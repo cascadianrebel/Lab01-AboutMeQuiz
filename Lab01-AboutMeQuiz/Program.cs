@@ -8,6 +8,10 @@ namespace Lab01_AboutMeQuiz
         {
             //Introduction line
             Console.WriteLine("About Me Quiz");
+
+            while (PlayGame())
+            {
+                Console.Clear();
             // Question 1 displays
             Console.WriteLine(HomeState());
             // Question 2 displays
@@ -18,7 +22,40 @@ namespace Lab01_AboutMeQuiz
             Console.WriteLine(Birthmark());
             // Question 5 displays
             Console.WriteLine(FavoriteSport());
+            // Calculates score
+            Console.WriteLine($"Your Score is {FindScore()}");
+
+            Console.WriteLine($"Let's play again!");
+            
+            }
+
         }
+        /// <summary>
+        /// asks user if they want to play 
+        /// </summary>
+        /// <returns>true or false</returns>
+        public static bool PlayGame()
+        {
+            Console.WriteLine($"Do you want to play the game?");
+            string StartGame = Console.ReadLine();
+            if (StartGame.ToLower() == "yes")
+            {
+                return true;
+            }
+            if (StartGame.ToLower() == "no")
+            {
+                Console.WriteLine("ok, fine. bye, felicia");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Let's try that again. Please enter yes or no");
+                return PlayGame();
+            }
+
+        }
+
+        public static int ScoreCounter = 0;
 
         static string HomeState()
         {
@@ -29,6 +66,7 @@ namespace Lab01_AboutMeQuiz
             //determines if the response is correct
             if (q1response.ToLower() == "mississippi" || q1response.ToLower() == "ms")
             {
+                ScoreCounter += 1;
                 return "Correct";
             }
             //for all incorrect answers the following will be returned
@@ -45,6 +83,7 @@ namespace Lab01_AboutMeQuiz
 
             if (q2response.ToLower() == "yes" || q2response.ToLower() == "y")
             {
+                ScoreCounter += 1;
                 return "Correct! I just moved to a new apartment in South Lake Union";
             }
             else
@@ -59,6 +98,7 @@ namespace Lab01_AboutMeQuiz
 
             if (q3response.ToLower() == "0" || q3response.ToLower() == "none" || q3response.ToLower() == "zero")
             {
+                ScoreCounter += 1;
                 return "Correct! I do not own any pets but my roommate has an 11 week old corgi puppy!";
             }
             else
@@ -73,6 +113,7 @@ namespace Lab01_AboutMeQuiz
 
             if (q4response.ToLower() == "eyeball" || q4response.ToLower() == "eye")
             {
+                ScoreCounter += 1;
                 return "Correct! I have a birthmark in the iris of my left eye. (partial heterochromia)";
             }
             else
@@ -88,12 +129,19 @@ namespace Lab01_AboutMeQuiz
 
             if (q5response.ToLower() == "football")
             {
+                ScoreCounter += 1;
                 return "Damn, right! I love me some good ole football. I follow college football religiously";
             }
             else
             {
                 return $"Meh. I don't really enjoy watching {q5response} on TV.";
             }
+        }
+
+        //returns a number
+        static int FindScore()
+        {
+            return ScoreCounter;
         }
     }
 }
